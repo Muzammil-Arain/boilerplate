@@ -7,8 +7,12 @@ import PopupModal from './PopupModal';
 import VectorIcon from './VectorIcon';
 import DropDownView from './DropDownView';
 import DateTimePicker from './DateTimePicker';
+import Background from './Background';
+import ScaleText from './ScaleText';
 export {
   InputError,
+  ScaleText,
+  Background,
   PopupModal,
   AppButton,
   ImageIcon,

@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:647503530744:android:f1503a41c7807db10d890d",
         "android_client_info": {
-          "package_name": "com.playdate"
+          "package_name": "com.boilerplate"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "647503530744-cv4k5qbm8ofp3h2dnicagh6lvp6q2a10.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.playdate",
+            "package_name": "com.boilerplate",
             "certificate_hash": "ef7b5c5398b6c587eaf33bb1483cdd34a42b3fe1"
           }
         },
@@ -25,7 +25,7 @@
           "client_id": "647503530744-ogprffs9pa26uvp1grv6uo4u6tsh9q7a.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.playdate",
+            "package_name": "com.boilerplate",
             "certificate_hash": "1f9d1432917d6b4176d87fe2feb14b442984097b"
           }
         },

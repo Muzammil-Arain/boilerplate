@@ -24,15 +24,17 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   modalRenderItemView: {
-    height: 40,
+    height: 50,
+    justifyContent: 'center',
+    paddingLeft: 10,
     marginBottom: 10,
-    padding: 0,
-    paddingBottom: 10,
+    borderWidth: 1,
+    borderRadius: 5,
+    borderBottomColor: Colors.Black_22,
   },
   modalRenderItemtextStyle: {
-    borderBottomWidth: 0.5,
-    borderBottomColor: Colors.Whiite_ED,
     fontSize: 15,
+    textAlign: 'left',
     color: Colors.Black_21,
   },
 });

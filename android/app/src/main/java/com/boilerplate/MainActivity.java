@@ -1,4 +1,4 @@
-package com.playdate;
+package com.boilerplate;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
@@ -13,7 +13,7 @@ public class MainActivity extends ReactActivity {
   @Override
   protected String getMainComponentName() {
     SplashScreen.show(this);
-    return "playDate";
+    return "boilerplate";
   }
 
   /**

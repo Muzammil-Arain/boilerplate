@@ -1,4 +1,4 @@
-import React from 'react';
+//Lib import
 import {
   StyleSheet,
   Text,
@@ -7,135 +7,43 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
+import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+//Local import
 import {Colors, Fonts, Images, Metrics} from '../../../theme';
 import {ButtonView} from '../../../components';
-import {NavigationService} from '../../../utils';
 import {authUserLogout, getUserData} from '../../../ducks/user';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useEffect} from 'react';
-import {useState} from 'react';
 
 const CustomDrawer = props => {
   const dispatch = useDispatch();
-  const [usertype, setUserType] = useState([]);
   const userData = useSelector(getUserData);
-  useEffect(() => {
-    if (userData?.role == 'Parent') {
-      setUserType(ParentData);
-    } else if (userData?.role == 'Nanny') {
-      setUserType(NannyData);
-    } else {
-      setUserType(TutorData);
-    }
-  }, []);
 
   const ParentData = [
     {
       label: 'Kydos profile',
-      image: Images.icon.drawerProfileIcon,
       navigation: 'kidsList',
     },
     {
       label: 'Subscription',
-      image: Images.icon.drawerSubscriptionIcon,
       navigation: 'Subscription',
     },
     {
       label: 'Notification',
-      image: Images.icon.drawerNotificationIcon,
       navigation: 'Notification',
     },
     {
       label: 'Matches',
-      image: Images.icon.drawerMatchIcon,
       navigation: 'HelloScreen',
     },
     {
       label: 'Kydos Market',
-      image: Images.icon.drawerMarketIcon,
       navigation: null,
     },
     {
       label: 'Logout',
-      image: Images.icon.drawerLogoutIcon,
-      navigation: 'SignIn',
-    },
-  ];
-
-  const NannyData = [
-    {
-      label: 'Profile',
-      image: Images.icon.drawerProfileIcon,
-      navigation: 'NannyProfile',
-    },
-    {
-      label: 'Subscription',
-      image: Images.icon.drawerSubscriptionIcon,
-      navigation: 'Subscription',
-    },
-    {
-      label: 'Notification',
-      image: Images.icon.drawerNotificationIcon,
-      navigation: 'Notification',
-    },
-    {
-      label: 'Matches',
-      image: Images.icon.drawerMatchIcon,
-      navigation: 'HelloScreen',
-    },
-    {
-      label: 'Messages',
-      image: Images.icon.drawerMessage,
-      navigation: 'Message',
-    },
-    {
-      label: 'Setting',
-      image: Images.icon.settingsIcon,
-      navigation: 'Settings',
-    },
-    {
-      label: 'Logout',
-      image: Images.icon.drawerLogoutIcon,
-      navigation: 'SignIn',
-    },
-  ];
-
-  const TutorData = [
-    {
-      label: 'Proile',
-      image: Images.icon.drawerProfileIcon,
-      navigation: 'PersonalInfo',
-    },
-    {
-      label: 'Matches',
-      image: Images.icon.drawerMatchIcon,
-      navigation: 'HelloScreen',
-    },
-    {
-      label: 'Messages',
-      image: Images.icon.drawerMessage,
-      navigation: 'Message',
-    },
-    {
-      label: 'Live Teaching Classes',
-      image: Images.icon.live,
-      navigation: 'LiveClasses',
-    },
-    {
-      label: 'Subscription Plan',
-      image: Images.icon.dollor,
-      navigation: 'Subscription',
-    },
-    {
-      label: 'Setting',
-      image: Images.icon.settingsIcon,
-      navigation: 'Settings',
-    },
-    {
-      label: 'Logout',
-      image: Images.icon.drawerLogoutIcon,
       navigation: 'SignIn',
     },
   ];
@@ -172,7 +80,7 @@ const CustomDrawer = props => {
     <View>
       <View style={styles.closeicon}>
         <TouchableOpacity onPress={() => props.navigation.closeDrawer()}>
-          <AntDesign name="close" size={20} color={Colors.white} />
+          <AntDesign name="close" size={20} color={Colors.White} />
         </TouchableOpacity>
       </View>
       <TouchableOpacity
@@ -198,16 +106,9 @@ const CustomDrawer = props => {
         <Text style={styles.SubHeading}>@{userData?.first_name}</Text>
       </TouchableOpacity>
 
-      {usertype.map((item, ind) => {
+      {ParentData.map((item, ind) => {
         return (
           <ButtonView
-            onPress={() => {
-              item.label == 'Logout'
-                ? handleLogut()
-                : item.label == 'Kydos Market'
-                ? alert('Coming soon')
-                : NavigationService.navigate(item.navigation);
-            }}
             style={{
               flexDirection: 'row',
               alignItems: 'center',
@@ -216,21 +117,21 @@ const CustomDrawer = props => {
               paddingLeft: Metrics.ratio(10),
               marginHorizontal: 10,
               paddingVertical: Metrics.ratio(13),
-              borderBottomColor: Colors.white,
+              borderBottomColor: Colors.White,
             }}>
             <View style={{width: '15%'}}>
-              <Image
-                tintColor="#FFF"
+              {/* <Image
+                tintColor={Colors.White}
                 resizeMode="contain"
                 source={item.image}
                 style={{width: 22, height: 22, marginRight: 5}}
-              />
+              /> */}
             </View>
 
             <Text
               style={{
                 marginLeft: 5,
-                color: Colors.white,
+                color: Colors.White,
                 fontSize: Fonts.size.size_14,
                 fontFamily: Fonts.type.Medium,
                 width: 100,
@@ -261,13 +162,13 @@ const styles = StyleSheet.create({
     height: 50,
     borderBottomWidth: 1,
     marginHorizontal: 5,
-    borderBottomColor: Colors.white,
+    borderBottomColor: Colors.White,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
   heading: {
-    color: Colors.white,
+    color: Colors.White,
     fontSize: 13,
     textTransform: 'capitalize',
     flex: 1,
@@ -283,14 +184,14 @@ const styles = StyleSheet.create({
     width: Metrics.ratio(85),
     alignItems: 'center',
     borderRadius: 100,
-    shadowColor: '#000',
+    shadowColor: Colors.Black,
     elevation: 10,
   },
   mainHeading: {
     textTransform: 'capitalize',
     textAlign: 'center',
     fontSize: Fonts.size.size_18,
-    color: Colors.white,
+    color: Colors.White,
     marginTop: 5,
     fontFamily: Fonts.type.Bold,
   },
@@ -298,7 +199,7 @@ const styles = StyleSheet.create({
     textTransform: 'capitalize',
     textAlign: 'center',
     fontSize: Fonts.size.size_12,
-    color: Colors.white,
+    color: Colors.White,
     marginTop: -5,
     fontFamily: Fonts.type.Light,
   },

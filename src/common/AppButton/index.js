@@ -37,7 +37,7 @@ const AppButton = ({
           },
         ]}>
         {isloading ? (
-          <ActivityIndicator size="large" color={Colors.Whiite_CC} />
+          <ActivityIndicator size="large" color={Colors.White} />
         ) : (
           <Text
             style={[

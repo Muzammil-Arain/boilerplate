@@ -17,3 +17,6 @@ const ImageIcon = ({source, tintColor, width, height}) => {
 };
 
 export default React.memo(ImageIcon);
+
+// icon website link
+// https://www.flaticon.com/search?word=mobile%20number

@@ -77,15 +77,14 @@ const PopupModal = ({
               <View style={styles.flexViewStyle}>
                 <AppButton
                   title={ButtonTitleOne}
-                  btnTextStyle={{fontSize: 15}}
-                  onPressButton={ButtonOnePress}
-                  btnViewStyle={styles.FlexBtnViewStyle}
+                  onPress={ButtonOnePress}
+                  containerStyle={styles.FlexBtnViewStyle}
                 />
                 <AppButton
                   title={ButtonTitleTwo}
-                  btnTextStyle={{fontSize: 15}}
-                  onPressButton={ButonTwoPress}
-                  btnViewStyle={styles.FlexBtnViewStyle}
+                  ShowLinear={false}
+                  onPress={ButonTwoPress}
+                  containerStyle={styles.FlexBtnViewStyle}
                 />
               </View>
             )}
@@ -105,7 +104,7 @@ const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
     width: '100%',
-    minHeight: 300,
+    minHeight: 320,
     alignItems: 'center',
     justifyContent: 'center',
   },

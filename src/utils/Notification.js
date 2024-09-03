@@ -2,6 +2,8 @@ import messaging from '@react-native-firebase/messaging';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import PushNotification from 'react-native-push-notification';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
+import {LocalStoragekey} from '../config/AppConfig';
+import {PermissionsAndroid, Platform} from 'react-native';
 
 export async function RequestUserPermission() {
   const authStatus = await messaging().requestPermission();
@@ -16,7 +18,7 @@ export async function RequestUserPermission() {
 }
 
 const getFCMToken = async () => {
-  let oldfcmToken = await AsyncStorage.getItem('fcmToken');
+  let oldfcmToken = await AsyncStorage.getItem(LocalStoragekey.FCM_TOKEN);
   console.log(oldfcmToken, 'the old token');
 
   if (!oldfcmToken) {
@@ -24,7 +26,7 @@ const getFCMToken = async () => {
       const NewfcmToken = await messaging().getToken();
       if (NewfcmToken) {
         console.log(NewfcmToken, 'the new genrated token');
-        await AsyncStorage.setItem('fcmToken', NewfcmToken);
+        await AsyncStorage.setItem(LocalStoragekey.FCM_TOKEN, NewfcmToken);
       }
     } catch (error) {
       console.log(error, 'Err');
@@ -76,4 +78,49 @@ export const NotificationListner = async () => {
     //PushNotification.cancelAllLocalNotifications()
     //handle()
   });
+};
+
+const requestNotificationPermission = async () => {
+  if (Platform.OS === 'android') {
+    // Check Android version
+    const androidVersion = parseInt(Platform.Version, 10);
+    if (androidVersion >= 33) {
+      // Android 13 and above
+      try {
+        const permission = PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS;
+        // Check if permission is already granted
+        const permissionStatus = await PermissionsAndroid.check(permission);
+        if (!permissionStatus) {
+          // Request permission
+          const granted = await PermissionsAndroid.request(permission, {
+            title: 'Notification Permission',
+            message:
+              'This app needs access to your notifications to provide updates.',
+            buttonNeutral: 'Ask Me Later',
+            buttonNegative: 'Cancel',
+            buttonPositive: 'OK',
+          });
+          if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+            console.log('Notification permission granted');
+            // Permission granted, proceed with sending notifications
+          } else if (granted === PermissionsAndroid.RESULTS.DENIED) {
+            console.log('Notification permission denied');
+            // Permission denied, handle accordingly
+          } else if (granted === PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN) {
+            console.log('Notification permission denied permanently');
+          }
+        } else {
+          console.log('Notification permission already granted');
+          // Permission already granted, proceed with sending notifications
+        }
+      } catch (err) {
+        console.error('Notification Permission Error:', err);
+      }
+    } else {
+      console.log(
+        'Android version is below 13, no need to request POST_NOTIFICATIONS permission.',
+      );
+      // Handle notification logic for Android versions below 13 if needed
+    }
+  }
 };

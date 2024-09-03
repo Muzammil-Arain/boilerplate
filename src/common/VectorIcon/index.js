@@ -7,6 +7,7 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Octicons from 'react-native-vector-icons/Octicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const VectorIcon = ({type, name, color, size}) => {
@@ -29,6 +30,8 @@ const VectorIcon = ({type, name, color, size}) => {
       return <MaterialIcons name={name} color={color} size={size} />;
     case 'MaterialCommunityIcons':
       return <MaterialCommunityIcons name={name} color={color} size={size} />;
+    case 'Entypo':
+      return <Entypo name={name} color={color} size={size} />;
     default:
       return null;
   }

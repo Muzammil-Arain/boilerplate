@@ -1,13 +1,13 @@
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import storage from '@react-native-async-storage/async-storage';
-import { createStore, applyMiddleware, compose } from 'redux';
-import { persistStore, persistReducer } from 'redux-persist';
-import { enableBatching } from 'redux-batched-actions';
+import {createStore, applyMiddleware, compose} from 'redux';
+import {persistStore, persistReducer} from 'redux-persist';
+import {enableBatching} from 'redux-batched-actions';
 import createSagaMiddleware from 'redux-saga';
-import { createLogger } from 'redux-logger';
+import {createLogger} from 'redux-logger';
 
-import { whiteList } from '../config/ReduxStorage';
-import { RootReducer, RootSaga } from '../ducks';
+import {whiteList} from '../config/ReduxStorage';
+import {RootReducer, RootSaga} from '../ducks';
 
 // check if chrome debugger is on
 const isDebuggingInChrome = __DEV__ && !!window.navigator.userAgent;

@@ -10,7 +10,6 @@ export default StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: Colors.white,
   },
   flashMessage: {
     fontFamily: Fonts.type.semiBold,
@@ -26,9 +25,6 @@ export default StyleSheet.create({
 
   headerStyle: {
     elevation: 0,
-    backgroundColor: Colors.HeaderBG,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.headerBorderColor,
     height: Util.isPlatformIOS()
       ? Metrics.screenHeight * 0.15
       : Metrics.screenHeight * 0.15,

@@ -5,7 +5,7 @@ import {Colors, Fonts, Metrics} from '../../theme';
 
 export default StyleSheet.create({
   linearGradient: {
-    height: 55,
+    height: 60,
     justifyContent: 'center',
     alignItems: 'center',
     marginVertical: 10,
@@ -13,6 +13,7 @@ export default StyleSheet.create({
   buttonTextStyle: {
     fontSize: Metrics.generatedFontSize(16, 16, true),
     textAlign: 'center',
-    // fontFamily: Fonts.primary,
+    fontFamily: Fonts.type.Medium,
+    textTransform: 'capitalize',
   },
 });

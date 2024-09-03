@@ -9,8 +9,8 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 import {ButtonView} from '../../components';
-import {Colors, Images} from '../../theme';
-import {InputError} from '../../common';
+import {Colors, Fonts, Images} from '../../theme';
+import {InputError, VectorIcon} from '../../common';
 import styles from './styles';
 
 const TextInputNative = props => {
@@ -64,6 +64,7 @@ const TextInputNative = props => {
     leftIcon,
     customStyle,
     iconType,
+    isDarkMode,
     ...rest
   } = props;
 
@@ -86,10 +87,10 @@ const TextInputNative = props => {
     let backgroundColor = Colors.grey;
     let shadowOpacity = 0;
     if (error) {
-      borderColor = Colors.errorInput;
+      borderColor = 'red';
     } else if (isFocused) {
       borderColor = Colors.pink;
-      backgroundColor = Colors.white;
+      backgroundColor = '#FFF';
       shadowOpacity = 0.2;
     }
 
@@ -143,17 +144,18 @@ const TextInputNative = props => {
           {textAlign},
           multiline && {textAlignVertical: 'top'},
           {
-            backgroundColor: backgroundColor,
-            borderRadius: 10,
+            fontSize: Fonts.size.size_14,
+            backgroundColor: Colors.White,
+            borderRadius: 5,
             borderWidth: 1,
-            borderColor: borderColor,
-            shadowColor: '#000000',
+            borderColor: error ? 'red' : Colors.Whiite_CC,
+            shadowColor: isDarkMode ? Colors.White : Colors.Black,
             shadowOpacity: shadowOpacity,
             shadowRadius: 4,
             shadowOffset: {width: 0, height: 6.5},
           },
         ]}
-        placeholderTextColor={Colors.darkGrey}
+        placeholderTextColor={Colors.Whiite_B1}
         placeholder={customPlaceholder}
         // placeholderStyle={{}}
         value={inputValue}
@@ -168,6 +170,7 @@ const TextInputNative = props => {
         secureTextEntry={secureTextEntry && !showPassword}
         // selectionColor={Colors.black}
         keyboardType={keyboardType}
+        showSoftInputOnFocus={false}
         {...{
           maxLength,
           onChangeText,
@@ -183,9 +186,13 @@ const TextInputNative = props => {
   //render title
   const renderTitle = () => {
     return (
-      <Text style={styles.title}>{`${customTitle || title}${
-        required ? '*' : ''
-      }`}</Text>
+      <Text
+        style={[
+          styles.title,
+          {
+            color: isDarkMode ? Colors.White : Colors.Black_21,
+          },
+        ]}>{`${customTitle || title}${required ? '*' : ''}`}</Text>
     );
   };
 
@@ -235,14 +242,15 @@ const TextInputNative = props => {
     } else if (secureTextEntry) {
       return (
         <ButtonView
-          // style={{ paddingVertical: 8 }}
+          style={{paddingVertical: 8, marginRight: 5}}
           onPress={() => {
             setShowPassword(!showPassword);
           }}>
-          <Image
-            resizeMode="contain"
-            style={{width: 19, height: 14, tintColor: Colors.pink}}
-            source={showPassword ? Images.icon.eye : Images.icon.eyeOff}
+          <VectorIcon
+            size={17}
+            type={'Entypo'}
+            color={Colors.LinearGradientTwo}
+            name={showPassword ? 'eye' : 'eye-with-line'}
           />
         </ButtonView>
       );
@@ -273,7 +281,7 @@ const TextInputNative = props => {
     // const TagView = View;
     let borderColor = customBorderColor;
     if (error) {
-      borderColor = Colors.errorInput;
+      borderColor = 'red';
     }
 
     let iconColor = Colors.Black;

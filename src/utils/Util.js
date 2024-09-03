@@ -1,8 +1,8 @@
-import {showMessage as flashMessageShow} from 'react-native-flash-message';
-import {Platform, StatusBar, Alert} from 'react-native';
-import moment from 'moment';
 import _ from 'lodash';
+import moment from 'moment';
 import storage from '@react-native-firebase/storage';
+import {Platform, StatusBar, Alert} from 'react-native';
+import {showMessage as flashMessageShow} from 'react-native-flash-message';
 
 function isPlatformAndroid() {
   return Platform.OS === 'android';

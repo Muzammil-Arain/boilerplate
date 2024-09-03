@@ -3,15 +3,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 let store = null;
 let isInternetConnected = false;
 let topLoaderRef = null;
-let userRole = null;
+let appTheme = false;
 let galleryModalRef = false;
 
-function setUserRole(value) {
-  userRole = value;
+function setAppTheme(value) {
+  appTheme = value;
 }
 
-function getUserRole() {
-  return userRole;
+function getAppTheme() {
+  return appTheme;
 }
 
 function setStore(value) {
@@ -92,8 +92,10 @@ export default {
   getUserRoleStatus,
   getTopLoaderRef,
   getGalleryModalRef,
-  getUserRole,
-  setUserRole,
   getFilterData,
   setFilterData,
+
+  //currently used
+  setAppTheme,
+  getAppTheme,
 };

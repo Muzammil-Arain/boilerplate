@@ -21,4 +21,9 @@ export default {
   },
   images: {},
   icon: {},
+  iconsource: {
+    backicon: 'https://cdn-icons-png.flaticon.com/128/271/271220.png',
+    dummyuserimage:
+      'https://med.gov.bz/wp-content/uploads/2020/08/dummy-profile-pic.jpg',
+  },
 };

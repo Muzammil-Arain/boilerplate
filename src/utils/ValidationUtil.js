@@ -259,84 +259,51 @@ export const ValidationSchema = {
     email: Validation.email('Email'),
     password: Validation.requiredWithoutTrim('Password'),
   }),
-  SSN: yup.object().shape({
-    ssn: Validation.requiredWithoutTrim('SSN'),
+  Project: yup.object().shape({
+    projectname: yup.string().required('Project name is required'),
+    selectedIndustry: yup.string().required('Industry is required'),
+    employmentType: yup.string().required('Employment type is required'),
+    jobTitle: yup.string().required('Job title is required'),
+    experienceLevel: yup.string().required('Experience level is required'),
+    jobLocation: yup.string().required('Job location is required'),
+    education: yup.string().required('Education is required'),
+    candidate: yup.string().required('Candidate is required'),
+    language: yup.string().required('Language is required'),
+    passport: yup.string().required('Passport is required'),
+    salaryHourly: yup
+      .number()
+      .typeError('Hourly salary must be a number')
+      .required('Hourly salary is required'),
+    salaryDaily: yup
+      .number()
+      .typeError('Daily salary must be a number')
+      .required('Daily salary is required'),
+    salaryMonthly: yup
+      .number()
+      .typeError('Monthly salary must be a number')
+      .required('Monthly salary is required'),
+    salaryAnnually: yup
+      .number()
+      .typeError('Annually salary must be a number')
+      .required('Annually salary is required'),
+  }),
+  projectName: yup.object().shape({
+    projectname: Validation.requiredWithoutTrim('project name'),
   }),
   newPassword: yup.object().shape({
-    newpassword: Validation.requiredWithoutTrim('New password'),
-    confirmpassword: Validation.requiredWithoutTrim('Confirm Password'),
+    password: Validation.password('Password'),
+    confirmpassword: Validation.passwordMatch('password', 'confirm password'),
   }),
-  forgotPassowrd: yup.object().shape({
+  resetPassword: yup.object().shape({
     email: Validation.email('Email'),
   }),
   SignUp: yup.object().shape({
     email: Validation.email('Email'),
     firstname: Validation.requiredWithoutTrim('First name'),
     lastname: Validation.requiredWithoutTrim('Last name'),
-    contact: Validation.requiredWithoutTrim('Contact number'),
+    phone: Validation.requiredWithoutTrim('phone number'),
     password: Validation.password('Password'),
-    confirm: Validation.passwordMatch('password', 'confirm password'),
-    // children: Validation.requiredWithoutTrim('Children'),
-  }),
-  parentEdit: yup.object().shape({
-    firstname: Validation.requiredWithoutTrim('First name'),
-    lastname: Validation.requiredWithoutTrim('Last name'),
-    children: Validation.requiredWithoutTrim('Children'),
-    contact: Validation.requiredWithoutTrim('Contact number'),
-  }),
-  SignupNanny: yup.object().shape({
-    email: Validation.email('Email'),
-    firstname: Validation.requiredWithoutTrim('First name'),
-    lastname: Validation.requiredWithoutTrim('Last name'),
-    contact: Validation.requiredWithoutTrim('Contact number'),
-    password: Validation.password('Password'),
-    confirm: Validation.passwordMatch('password', 'confirm password'),
-  }),
-  SignupNannySecondSetup: yup.object().shape({
-    currentJob: Validation.requiredWithoutTrim('Current Job'),
-    eductionBackground: Validation.requiredWithoutTrim('Eduction Background'),
-    medical: Validation.requiredWithoutTrim(''),
-    hobbies: Validation.requiredWithoutTrim('Hobbies'),
-  }),
-  NannyEditprofile: yup.object().shape({
-    firstname: Validation.requiredWithoutTrim('First name'),
-    lastname: Validation.requiredWithoutTrim('Last name'),
-    maritilstatus: Validation.requiredWithoutTrim('maritialstatus'),
-    currentjob: Validation.requiredWithoutTrim('Current job'),
-    children: Validation.requiredWithoutTrim('Children'),
-    eduction: Validation.requiredWithoutTrim('Education'),
-    motherlanguage: Validation.requiredWithoutTrim('Mother language'),
-    additionallanguage: Validation.requiredWithoutTrim('Additional language'),
-    allergies: Validation.requiredWithoutTrim('Allargies'),
-    medical: Validation.requiredWithoutTrim('Medical'),
-    hobbies: Validation.requiredWithoutTrim('Hobbies'),
-  }),
-  SignUpTutor: yup.object().shape({
-    address: Validation.requiredWithoutTrim('Address'),
-    religion: Validation.requiredWithoutTrim('Religion'),
-    ethnicity: Validation.requiredWithoutTrim('Ethnicity'),
-    ssn: Validation.requiredWithoutTrim('SSN'),
-    health: Validation.requiredWithoutTrim('Health issue'),
-    teaching: Validation.requiredWithoutTrim('Your Teaching Experience'),
-  }),
-  EditsignUpTutor: yup.object().shape({
-    firstname: Validation.requiredWithoutTrim('First name'),
-    lastname: Validation.requiredWithoutTrim('last name'),
-    contectnumber: Validation.requiredWithoutTrim('Contact number'),
-    Religion: Validation.requiredWithoutTrim('Religion'),
-    health: Validation.requiredWithoutTrim('Health issue'),
-    teaching: Validation.requiredWithoutTrim('Your Teaching Experience'),
-    address: Validation.requiredWithoutTrim('Address'),
-  }),
-  addKids: yup.object().shape({
-    kidName: Validation.requiredWithoutTrim('Name'),
-    weight: Validation.requiredWithoutTrim('Weight'),
-    height: Validation.requiredWithoutTrim('Height'),
-    aboutchildren: Validation.requiredWithoutTrim('About your child'),
-  }),
-  testVal: yup.object().shape({
-    firstname: Validation.requiredWithoutTrim('Address'),
-    lastname: Validation.requiredWithoutTrim('Health issue'),
+    confirmpassword: Validation.passwordMatch('password', 'confirm password'),
   }),
 };
 

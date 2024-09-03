@@ -1,4 +1,4 @@
-package com.playdate.newarchitecture.components;
+package com.boilerplate.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

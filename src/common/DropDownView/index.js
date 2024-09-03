@@ -1,31 +1,53 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import PropTypes from 'prop-types';
-import {ButtonView} from '../../components';
 import {Colors, Fonts} from '../../theme';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-const DropDownView = ({onPress, title, value}) => {
+const DropDownView = ({onPress, title, value, errormessage, isDarkMode}) => {
   return (
     <View>
-      <Text style={styles.dropDownTitle}>{title}</Text>
-      <ButtonView onPress={onPress} style={styles.mainView}>
+      <Text
+        style={[
+          styles.dropDownTitle,
+          {
+            color: isDarkMode ? Colors.White : Colors.Black_21,
+          },
+        ]}>
+        {title}
+      </Text>
+      <TouchableOpacity
+        onPress={onPress}
+        style={[
+          styles.mainView,
+          {
+            borderWidth: 1,
+            borderColor: errormessage ? 'red' : Colors.Whiite_CC,
+          },
+        ]}>
         <Text style={styles.valueStyle}>{value}</Text>
-        <AntDesign name="caretdown" size={13} color={Colors.Black} />
-      </ButtonView>
+        <AntDesign name="caretdown" size={13} color={Colors.Black_56} />
+      </TouchableOpacity>
+      {errormessage && (
+        <Text style={styles.valueErrorStyle}>{errormessage}</Text>
+      )}
     </View>
   );
 };
 
 DropDownView.propTypes = {
-  onPress: PropTypes.func.isRequired,
+  onPress: PropTypes.func, // Made optional
   title: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
+  errormessage: PropTypes.string,
+  isDarkMode: PropTypes.bool,
 };
 
 DropDownView.defaultProps = {
   title: '',
   value: '',
+  errormessage: null,
+  onPress: () => {}, // Default empty function
 };
 
 export default React.memo(DropDownView);
@@ -36,20 +58,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 15,
-    height: 50,
+    height: 58,
     backgroundColor: Colors.White,
-    borderWidth: 1,
-    borderColor: Colors.Whiite_CC,
     borderRadius: 5,
     marginBottom: 10,
   },
   dropDownTitle: {
-    color: Colors.Black,
-    fontSize: Fonts.size.size_14,
-    marginTop: 10,
-    marginBottom: 5,
+    fontSize: Fonts.size.size_15,
+    fontFamily: Fonts.type.Medium,
+    textTransform: 'capitalize',
   },
   valueStyle: {
-    fontSize: Fonts.size.size_15,
+    color: Colors.Black_21,
+    letterSpacing: 0.2,
+    fontSize: Fonts.size.size_14,
+  },
+  valueErrorStyle: {
+    color: 'red',
+    marginLeft: 2,
+    fontFamily: Fonts.type.Regular,
   },
 });

@@ -1,16 +1,20 @@
+//Lib import
 import configureStore from './store';
+import {Provider} from 'react-redux';
 import React, {useEffect, useState} from 'react';
-import {StatusBar, View} from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
+import FlashMessage from 'react-native-flash-message';
+import {RequestUserPermission, NotificationListner} from './utils/Notification';
+
+//Local import
+import {} from './screens';
+import {Colors} from './theme';
+import AppNavigator from './naviagtor';
+import {GalleryPicker} from './components';
 import DataHandler from './utils/DataHandler';
 import NetworkInfo from './utils/NetworkInfo';
-import AppNavigator from './naviagtor';
-import {Provider} from 'react-redux';
-import {} from './screens';
-import SplashScreen from 'react-native-splash-screen';
-import {Colors} from './theme';
-import {RequestUserPermission, NotificationListner} from './utils/Notification';
-import FlashMessage from 'react-native-flash-message';
-import {GalleryPicker} from './components';
+import {StatusBar, View} from 'react-native';
+import {LocalizationProvider} from './helper/lanaguagecontext';
 
 const App = () => {
   // set store state
@@ -23,9 +27,9 @@ const App = () => {
     DataHandler.setStore(store);
     NetworkInfo.addNetInfoListener();
 
-    // setTimeout(() => {
-    //   setStore(store);
-    // }, 3000);
+    setTimeout(() => {
+      setStore(store);
+    }, 3000);
     // set store state
 
     // hide splash
@@ -35,27 +39,26 @@ const App = () => {
   useEffect(() => {
     // configure store
     configureStore(onStoreConfigure);
-    RequestUserPermission();
-    NotificationListner();
+    // RequestUserPermission();
+    // NotificationListner();
     // unscribe to all things on unmount
     return () => {
       NetworkInfo.removeNetInfoListener();
     };
   }, []);
 
-  // if (storeState === null) {
-  //   return <CustomSplashScreen />;
-  // }
+  if (storeState === null) {
+    return null;
+  }
 
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
-      <Provider store={storeState}>
-        <StatusBar backgroundColor={Colors.HeaderBG} />
+    <Provider store={storeState}>
+      <LocalizationProvider>
         <AppNavigator />
         <GalleryPicker ref={ref => DataHandler.setGalleryModalRef(ref)} />
         <FlashMessage position="bottom" />
-      </Provider>
-    </View>
+      </LocalizationProvider>
+    </Provider>
   );
 };
 

@@ -161,9 +161,9 @@ export default createReducer(initalState, builder => {
 // // selectors
 export const getChats = state => state?.user?.allchats;
 // export const getUserData = state => state;
+export const getHomeData = state => state?.user?.homeData;
 export const getUserData = state => state?.user?.data?.user;
 export const getCountriesData = state => state?.user?.countries;
 export const getUserToken = state => state?.user?.data?.access_token;
 export const getNotificationsData = state => state?.user?.notification;
-export const getHomeData = state => state?.user?.homeData;
 export const getuserSubscriptionData = state => state?.user?.subscriptionplan;

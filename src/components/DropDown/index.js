@@ -49,7 +49,9 @@ const DropDown = ({data, isModalVisible, handleHideModal, handlePress}) => {
                 handlePress(item);
               }}
               style={styles.modalRenderItemView}>
-              <Text style={styles.modalRenderItemtextStyle}>{item.name}</Text>
+              <Text style={styles.modalRenderItemtextStyle}>
+                {item.name ?? item.title}
+              </Text>
             </TouchableOpacity>
           )}
         />

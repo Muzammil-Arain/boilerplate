@@ -1,36 +1,17 @@
 import {Colors} from '../theme';
 
-// GOOGLE API KEY
+// Google Api Key
 export const GOOGLE_API_KEY = 'aaaa';
-export const APPLICATION_ROLES = {
-  NANNY: 'NANNY',
-  TUTOR: 'TUTOR',
-  PARENT: 'PARENT',
-};
-export const BUTTON_TYPE = {
-  pink: Colors.pink,
-  black: Colors.black,
-  green: Colors.green,
-  grey: Colors.greyMedium,
-  lightPink: Colors.lightPink,
-  blue: Colors.lightBlue,
-  orange: Colors.orange,
-  offwhite: Colors.Button,
+
+// LocalStorage Keys
+export const LocalStoragekey = {
+  FCM_TOKEN: 'FCM_TOKEN',
+  LANGUAGE: 'LANGUAGE',
+  THEME_COLOUR: 'THEME_COLOUR',
 };
 
-export const USER_ROLES = {
-  Tutors: 'Tutors',
-  Nannies: 'Nannies',
-  Parents: 'Parents',
-};
-
-export const iconTypes = {
-  entypo: 'entypo',
-  material: 'material',
-  materialComunity: 'materialComunity',
-  ionIcon: 'ionIcon',
-  feather: 'feather',
-};
+//Firebase realtime database name key
+export const FirebaseChatKey = 'Firebase-Chat';
 
 export const galleryViewOptions = [
   {

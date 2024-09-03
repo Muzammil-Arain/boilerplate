@@ -2,4 +2,7 @@ export const yellowBox = __DEV__ && false;
 export const allowTextFontScaling = false;
 export const allowIQKeyboardManager = true;
 
-export const Firebase_Chat_Key = 'Firebase-Chat';
+//show theme switch
+export const enableDrakandLightTheme = true;
+// multipule langunage support
+export const enableMultipleLanguage = true;
