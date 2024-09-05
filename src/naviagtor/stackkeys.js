@@ -7,8 +7,10 @@ export const StackNav = {
   ForgetPassword: 'ForgetPassword',
 
   //AppStack Screens
+  AppStack: 'AppStack',
+  Candidate: 'Candidate',
   ProjectType: 'ProjectType',
   ProjectName: 'ProjectName',
   ProjectDetails: 'ProjectDetails',
-  AppStack: 'AppStack',
+  CandidateDetails: 'CandidateDetails',
 };

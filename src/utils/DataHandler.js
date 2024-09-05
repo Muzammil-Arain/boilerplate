@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 let store = null;
 let isInternetConnected = false;
 let topLoaderRef = null;
-let appTheme = false;
+let appTheme = true;
 let galleryModalRef = false;
 
 function setAppTheme(value) {

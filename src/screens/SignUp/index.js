@@ -16,7 +16,7 @@ const SignUp = ({navigation}) => {
     picture: null,
     isLoading: false,
   });
-  const isDarkMode = DataHandler.getAppTheme() || false;
+  const isDarkMode = DataHandler.getAppTheme();
 
   const [
     formObj,

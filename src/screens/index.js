@@ -6,9 +6,12 @@ import NewPassword from './NewPassword';
 import ForgetPassword from './ForgetPassword';
 
 //AppStack
+import Candidate from './Candidate';
 import ProjectType from './ProjectType';
 import ProjectName from './ProjectName';
 import ProjectDetails from './ProjectDetails';
+import CandidateDetails from './CandidateDetails';
+
 export const StackRoute = {
   //OuthStack
   Login,
@@ -18,7 +21,9 @@ export const StackRoute = {
   ForgetPassword,
 
   //AppStack
-  ProjectType,
+  Candidate,
   ProjectName,
+  ProjectType,
   ProjectDetails,
+  CandidateDetails,
 };

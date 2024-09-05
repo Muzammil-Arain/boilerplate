@@ -19,7 +19,7 @@ import VectorIcon from '../VectorIcon';
 const Background = ({
   isDarkMode,
   showHeader,
-  showBack,
+  scrollDisable,
   showProfile,
   children,
 }) => {
@@ -97,6 +97,8 @@ const Background = ({
           source={require('../../assets/images/background.png')}>
           <SafeAreaView style={styles.safeArea}>
             <ScrollView
+              contentInsetAdjustmentBehavior="automatic"
+              scrollEnabled={scrollDisable}
               style={styles.scrollView}
               showsVerticalScrollIndicator={false}
               nestedScrollEnabled={true}>

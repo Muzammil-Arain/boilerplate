@@ -2,13 +2,14 @@ import React from 'react';
 import {TextInput, View, StyleSheet} from 'react-native';
 import strings from '../../i18n/index';
 import {Colors, Fonts, Metrics} from '../../theme';
-import {DataHandler} from '../../utils';
+import {DataHandler, NavigationService} from '../../utils';
 import {TextInputNative} from '../../components';
 import {AppButton, Background, DropDownView, ScaleText} from '../../common';
 import {useHookForm, ValidationSchema} from '../../utils/ValidationUtil';
+import {StackNav} from '../../naviagtor/stackkeys';
 
 const ProjectDetails = ({navigation}) => {
-  const isDarkMode = DataHandler.getAppTheme() || false;
+  const isDarkMode = DataHandler.getAppTheme();
   const [formObj, projectNameProps] = useHookForm(
     ['projectname'],
     {},
@@ -107,7 +108,10 @@ const ProjectDetails = ({navigation}) => {
         placeholder="Annually"
       />
       <View style={{marginVertical: 20}}>
-        <AppButton onPress={submit} title={'Sign In'} />
+        <AppButton
+          onPress={() => NavigationService.navigate(StackNav.Candidate)}
+          title={'Sign In'}
+        />
       </View>
     </Background>
   );

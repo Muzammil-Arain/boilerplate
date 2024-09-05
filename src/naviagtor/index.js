@@ -71,6 +71,18 @@ function StackScreens() {
       />
 
       <Stack.Screen
+        name={StackNav.Candidate}
+        options={{headerShown: false}}
+        component={StackRoute.Candidate}
+      />
+
+      <Stack.Screen
+        name={StackNav.CandidateDetails}
+        options={{headerShown: false}}
+        component={StackRoute.CandidateDetails}
+      />
+
+      <Stack.Screen
         name={StackNav.AppStack}
         component={DrawerNavigator}
         options={{headerShown: false}}

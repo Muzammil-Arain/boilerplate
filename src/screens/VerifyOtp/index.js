@@ -14,7 +14,7 @@ const VerifyOtp = ({route}) => {
     otpcode: '',
     isLoading: false,
   });
-  const isDarkMode = DataHandler.getAppTheme() || false;
+  const isDarkMode = DataHandler.getAppTheme();
 
   const handleVerifyCode = async () => {
     setStateData(prv => ({...prv, isLoading: true}));

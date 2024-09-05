@@ -11,7 +11,7 @@ const ForgetPassword = () => {
   const [statedata, setStateData] = useState({
     isLoading: false,
   });
-  const isDarkMode = DataHandler.getAppTheme() || false;
+  const isDarkMode = DataHandler.getAppTheme();
   const [formObj, emailProps] = useHookForm(
     ['email'],
     {},

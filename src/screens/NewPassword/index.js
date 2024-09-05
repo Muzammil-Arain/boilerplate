@@ -12,7 +12,7 @@ const NewPassword = () => {
   const [statedata, setStateData] = useState({
     isLoading: false,
   });
-  const isDarkMode = DataHandler.getAppTheme() || false;
+  const isDarkMode = DataHandler.getAppTheme();
   const [formObj, passwordProps, confirm_passwordProps] = useHookForm(
     ['password', 'confirmpassword'],
     {},

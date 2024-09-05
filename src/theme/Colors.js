@@ -21,4 +21,9 @@ export default {
   Black_57: '#777777',
   Black_58: '#888888',
   Black_59: '#999999',
+
+  //Skeleton color
+  // SkeletonLightBackground: '#E0E0E0 ',
+  // SkeletonHighlightDark: '#3A3A3C ',
+  // SkeletonHighlightLight: '#F5F5F5',
 };

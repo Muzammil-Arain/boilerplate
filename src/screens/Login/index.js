@@ -17,7 +17,7 @@ const Login = () => {
     isLoading: false,
     themeModal: false,
   });
-  const isDarkMode = DataHandler.getAppTheme() || false;
+  const isDarkMode = DataHandler.getAppTheme();
 
   const [formObj, emailProps, passwordProps] = useHookForm(
     ['email', 'password'],

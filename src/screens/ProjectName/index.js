@@ -10,7 +10,7 @@ import {useHookForm, ValidationSchema} from '../../utils/ValidationUtil';
 import {StackNav} from '../../naviagtor/stackkeys';
 
 const ProjectName = ({navigation}) => {
-  const isDarkMode = DataHandler.getAppTheme() || false;
+  const isDarkMode = DataHandler.getAppTheme();
   const [formObj, projectNameProps] = useHookForm(
     ['projectname'],
     {},

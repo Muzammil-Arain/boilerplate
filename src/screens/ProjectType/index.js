@@ -7,7 +7,7 @@ import {DataHandler, NavigationService} from '../../utils';
 import {StackNav} from '../../naviagtor/stackkeys';
 
 const ProjectType = ({navigation}) => {
-  const isDarkMode = DataHandler.getAppTheme() || false;
+  const isDarkMode = DataHandler.getAppTheme();
 
   return (
     <Background showHeader={true} showProfile={true} isDarkMode={isDarkMode}>
